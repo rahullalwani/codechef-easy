@@ -1,0 +1,44 @@
+//////////////Program to calculate the gcd of two numbers when one of them is very large i.e in the order of 10^250
+
+#include<iostream>
+#include<bits/stdc++.h>
+typedef long long int ll;
+using namespace std;
+ll gcd(ll a,ll b)
+{
+    if(a==0)
+        return b;
+    return gcd(b%a,a);
+}//ll gcd
+ll reduceB(ll a,string b)
+{
+    ll mod=0;
+    for(ll i=0;i<b.length();i++)
+    {
+        mod=(mod*10+b[i]-'0')%a;
+    }//for
+    return mod;
+}//reduce B;
+ll gcdlarge(ll a,string b)
+{
+    ll num=reduceB(a,b);
+    return gcd(a,num);
+}//gcd large
+int main()
+{
+    ll t; //number of test cases
+    cin>>t;
+    while(t--)
+    {
+        ll a;
+        string b;
+        cin>>a;
+        cin>>b;
+
+        if(a==0)
+            cout<<b<<endl;
+        else
+        cout<<gcdlarge(a,b)<<endl;
+    }//while
+    return 0;
+}//main
