@@ -1,0 +1,75 @@
+#include<iostream>
+#include<bits/stdc++.h>
+#include<string>
+using namespace std;
+
+int checksubsequence(string m,string w) //w is the larger string
+{
+    int len_larger=w.length();
+    int len_small=m.length();
+    int j=0;
+    for(int i=0;i<len_larger && j<len_small;i++)
+    {
+        if(m[j]==w[i])
+            j++;
+    }
+
+    return (j==len_small);
+
+
+}//if
+
+
+
+
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        string m;
+        string w;
+        cin>>m>>w;
+
+        if(m.length()>w.length() || m.length()<w.length());
+        {
+            if(m.length()<w.length())
+            {
+                int t=checksubsequence(m,w);
+                if(t==1)
+                {
+                    cout<<"YES"<<endl;
+                }
+                else
+                    cout<<"NO"<<endl;
+            }//if
+
+            if(m.length()>w.length())
+            {
+                int t=checksubsequence(w,m);
+                if(t==1)
+                {
+                    cout<<"YES"<<endl;
+                }
+                else
+                    cout<<"NO"<<endl;
+
+            }//if
+
+        }//else
+        if(m.length()==w.length())
+        {
+               if(m.compare(w)==0)
+                        cout<<"YES"<<endl;
+               else
+                cout<<"NO"<<endl;
+        }//else if
+
+
+
+    }//while
+
+    return 0;
+}
